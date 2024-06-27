@@ -26,11 +26,10 @@ def category(request, category_id):
 
 
 def recipe(request, id):
-
-    recipe = Recipe.objects.filter(
+    recipe = get_object_or_404(
         pk=id,
         is_published=True
-    )
+        )
 
     return render(request, 'recipes/pages/recipe-view.html', context={
         'recipe': recipe,
